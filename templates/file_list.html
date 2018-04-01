@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>File List</title>
+</head>
+<body>
+{% for cur_dir in file_list %}
+{% if cur_dir.type == "dir" %}
+<div><a href={{url_for('get_files', target_dir=cur_dir.dir)}}>{{cur_dir.name}}</a></div>
+{% elif cur_dir.type == "file" %}
+<div><a href={{url_for('get_file', target_dir=cur_dir.dir)}}>{{cur_dir.name}}({{cur_dir.size}})</a></div>
+{% endif %}
+{% endfor %}
+</body>
+</html>
